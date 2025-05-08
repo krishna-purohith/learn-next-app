@@ -7,7 +7,7 @@ export async function GET(
   { params }: { params: { id: string } }
 ) {
   const user = await prisma.user.findUnique({
-    where: { id: parseInt(params.id) },
+    where: { id: params.id },
   });
 
   if (!user)
@@ -35,7 +35,7 @@ export async function PUT(
     return NextResponse.json({ error: "Name is required" }, { status: 400 });
 
   const user = await prisma.user.findUnique({
-    where: { id: parseInt(params.id) },
+    where: { id: params.id },
   });
 
   if (!user)
@@ -57,7 +57,7 @@ export async function DELETE(
   { params }: { params: { id: string } }
 ) {
   const user = await prisma.user.findUnique({
-    where: { id: parseInt(params.id) },
+    where: { id: params.id },
   });
 
   if (!user)
